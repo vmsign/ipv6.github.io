@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get IPv6 Address</title>
+</head>
+<body>
+    <h3>Your IPv6 Address: <span id="ipv6">Fetching...</span></h3>
+
+    <script>
+        // Use an IPv6-only endpoint to force IPv6 retrieval
+        fetch('api6.ipify.org')
+            .then(response => response.json())
+            .then(data => {
+                // Display the IPv6 address in the span element
+                document.getElementById('ipv6').textContent = data.ip;
+            })
+            .catch(error => {
+                // This block executes if IPv6 is not supported by the user's network
+                document.getElementById('ipv6').textContent = "IPv6 not supported or not found";
+                console.error('Error fetching IPv6:', error);
+            });
+    </script>
+</body>
+</html>
