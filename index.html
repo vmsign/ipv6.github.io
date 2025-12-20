@@ -108,4 +108,19 @@
 
     <footer>
         <p>&copy; 2025 Raspberry IP. All rights reserved.</p>
-        <p>Visit our <a href="https://ipv4.raspberryip.com">IPv4 Detection Page</
+        <p>Visit our <a href="https://ipv4.raspberryip.com">IPv4 Detection Page</a></p>
+    </footer>
+
+    <script>
+        // Detect the IPv6 address using ipify API
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ipv6-address').innerText = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('ipv6-address').innerText = "Unable to detect IPv6 address.";
+            });
+    </script>
+</body>
+</html>
