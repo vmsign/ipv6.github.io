@@ -2,24 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Get IPv6 Address</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPv6 Checker - Detect My Public IPv6 Address (2025)</title>
+    <meta name="description" content="Check your public IPv6 address. Find out if your internet connection and ISP support the IPv6 protocol.">
+    
+    <link rel="canonical" href="yourdomain.com">
+
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #fdfdfd; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; max-width: 500px; width: 90%; }
+        h1 { color: #8e24aa; font-size: 1.5rem; margin-bottom: 1rem; }
+        .ip-box { font-size: 1.1rem; font-family: monospace; padding: 15px; background: #f3e5f5; border-radius: 6px; color: #7b1fa2; border: 1px solid #e1bee7; word-break: break-all; }
+        .error { color: #c62828; font-size: 0.9rem; }
+    </style>
 </head>
 <body>
-    <h3>Your IPv6 Address: <span id="ipv6">Fetching...</span></h3>
+
+    <main class="container">
+        <h1>Your IPv6 Address</h1>
+        <!-- Display element for IPv6 -->
+        <div id="ipv6-display" class="ip-box">Detecting IPv6...</div>
+    </main>
 
     <script>
-        // Use an IPv6-only endpoint to force IPv6 retrieval
-        fetch('api6.ipify.org')
-            .then(response => response.json())
-            .then(data => {
-                // Display the IPv6 address in the span element
-                document.getElementById('ipv6').textContent = data.ip;
-            })
-            .catch(error => {
-                // This block executes if IPv6 is not supported by the user's network
-                document.getElementById('ipv6').textContent = "IPv6 not supported or not found";
-                console.error('Error fetching IPv6:', error);
-            });
+        /**
+         * Fetches public IPv6 address using an IPv6-only API endpoint.
+         */
+        async function getIPv6() {
+            const display = document.getElementById('ipv6-display');
+            try {
+                // api6.ipify.org only resolves via IPv6
+                const response = await fetch('api6.ipify.org');
+                if (!response.ok) throw new Error('IPv6 connection failed');
+                const data = await response.json();
+                display.textContent = data.ip;
+            } catch (err) {
+                // This will trigger if the user's ISP/Router doesn't support IPv6
+                display.innerHTML = '<span class="error">IPv6 not supported on this network</span>';
+                console.error('IPv6 Fetch Error:', err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', getIPv6);
     </script>
 </body>
 </html>
