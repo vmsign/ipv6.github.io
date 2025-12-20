@@ -3,47 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IPv6 Checker - Detect My Public IPv6 Address (2025)</title>
-    <meta name="description" content="Check your public IPv6 address. Find out if your internet connection and ISP support the IPv6 protocol.">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <link rel="canonical" href="yourdomain.com">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Check your IPv6 address instantly with Raspberry IP. Our service detects your IPv6 address and shows it in real-time.">
+    <meta name="keywords" content="IPv6, detect IPv6, check IPv6 address, find IPv6 address, Raspberry IP">
+    <meta name="author" content="Raspberry IP">
+    
+    <meta property="og:title" content="Detect Your IPv6 Address - Raspberry IP">
+    <meta property="og:description" content="Find your IPv6 address quickly with Raspberry IP. Simple and accurate IPv6 detection.">
+    <meta property="og:image" content="https://ipv6.raspberryip.com/your-image.png">
+    <meta property="og:url" content="https://ipv6.raspberryip.com">
+    <meta name="twitter:card" content="summary_large_image">
 
+    <title>Detect Your IPv6 Address - Raspberry IP</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #fdfdfd; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { background: #ffffff; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: center; max-width: 500px; width: 90%; }
-        h1 { color: #8e24aa; font-size: 1.5rem; margin-bottom: 1rem; }
-        .ip-box { font-size: 1.1rem; font-family: monospace; padding: 15px; background: #f3e5f5; border-radius: 6px; color: #7b1fa2; border: 1px solid #e1bee7; word-break: break-all; }
-        .error { color: #c62828; font-size: 0.9rem; }
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3c6e71;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .content h2 {
+            font-size: 2.2em;
+            color: #3c6e71;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ip-address {
+            font-size: 1.8em;
+            color: #4CAF50;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f4f4f9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Detect Your IPv6 Address</h1>
+        <p>Instantly find your IPv6 address using Raspberry IP.</p>
+    </header>
 
-    <main class="container">
-        <h1>Your IPv6 Address</h1>
-        <!-- Display element for IPv6 -->
-        <div id="ipv6-display" class="ip-box">Detecting IPv6...</div>
-    </main>
+    <div class="content">
+        <h2>Your IPv6 Address</h2>
+        <p>We have detected your IPv6 address. Below is the information:</p>
+        <div class="ip-address" id="ipv6-address">
+            Loading...
+        </div>
+    </div>
 
-    <script>
-        /**
-         * Fetches public IPv6 address using an IPv6-only API endpoint.
-         */
-        async function getIPv6() {
-            const display = document.getElementById('ipv6-display');
-            try {
-                // api6.ipify.org only resolves via IPv6
-                const response = await fetch('api6.ipify.org');
-                if (!response.ok) throw new Error('IPv6 connection failed');
-                const data = await response.json();
-                display.textContent = data.ip;
-            } catch (err) {
-                // This will trigger if the user's ISP/Router doesn't support IPv6
-                display.innerHTML = '<span class="error">IPv6 not supported on this network</span>';
-                console.error('IPv6 Fetch Error:', err);
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded', getIPv6);
-    </script>
-</body>
-</html>
+    <footer>
+        <p>&copy; 2025 Raspberry IP. All rights reserved.</p>
+        <p>Visit our <a href="https://ipv4.raspberryip.com">IPv4 Detection Page</
