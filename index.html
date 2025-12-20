@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Check your IPv6 address instantly with Raspberry IP. Our service detects your IPv6 address and shows it in real-time.">
+    <meta name="keywords" content="IPv6, detect IPv6, check IPv6 address, find IPv6 address, Raspberry IP">
+    <meta name="author" content="Raspberry IP">
+    
+    <meta property="og:title" content="Detect Your IPv6 Address - Raspberry IP">
+    <meta property="og:description" content="Find your IPv6 address quickly with Raspberry IP. Simple and accurate IPv6 detection.">
+    <meta property="og:image" content="https://ipv6.raspberryip.com/your-image.png">
+    <meta property="og:url" content="https://ipv6.raspberryip.com">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Detect Your IPv6 Address - Raspberry IP</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background-color: #3c6e71;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px 20px;
+        }
+
+        .content h2 {
+            font-size: 2.2em;
+            color: #3c6e71;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ip-address {
+            font-size: 1.8em;
+            color: #4CAF50;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #f4f4f9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Detect Your IPv6 Address</h1>
+        <p>Instantly find your IPv6 address using Raspberry IP.</p>
+    </header>
+
+    <div class="content">
+        <h2>Your IPv6 Address</h2>
+        <p>We have detected your IPv6 address. Below is the information:</p>
+        <div class="ip-address" id="ipv6-address">
+            Loading...
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Raspberry IP. All rights reserved.</p>
+        <p>Visit our <a href="https://ipv4.raspberryip.com">IPv4 Detection Page</a></p>
+    </footer>
+
+    <script>
+        // Detect the IPv6 address using ipify API
+        fetch('https://api64.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ipv6-address').innerText = data.ip;
+            })
+            .catch(error => {
+                document.getElementById('ipv6-address').innerText = "Unable to detect IPv6 address.";
+            });
+    </script>
+</body>
+</html>
